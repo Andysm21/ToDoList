@@ -31,6 +31,24 @@ body {
     justify-content: center;
     gap: 10px;
 }
+#Refresh{
+    background-color: #78c1f3;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5%;
+}
+#deleteAll{
+    background-color: #78c1f3;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5%;
+}
 #add{
     background-color: #78c1f3;
     color: white;
