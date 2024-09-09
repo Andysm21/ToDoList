@@ -77,7 +77,7 @@ function renderFilteredTasks(filteredTasks) {
         let completeButton = document.createElement("button");
         completeButton.classList.add('completed-btn');
         const image = document.createElement('img');
-        image.src = '../resources/check.png';
+        image.src = '../resources/images/check.png';
         image.alt = 'Completed';
         completeButton.appendChild(image);
         completeButton.addEventListener('click', () => completed(index));
