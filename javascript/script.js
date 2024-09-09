@@ -134,13 +134,13 @@ deleteButton.addEventListener('click', async () => {
     const tasksCollection = firebase.firestore().collection('tasks');
     const querySnapshot = await tasksCollection.get();
 
-    for (const doc of querySnapshot) {
+    querySnapshot.forEach(async (doc) => {
         const taskData = doc.data();
         if (taskData.isDone) {
             await tasksCollection.doc(doc.id).delete();
             console.log("Deleted task with ID:", doc.id);
         }
-    }
+    });
 
     pendingList = [];
     await renderTasks();
