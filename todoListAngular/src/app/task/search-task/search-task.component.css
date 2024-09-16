@@ -1,0 +1,20 @@
+.search-task-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50%;
+}
+#prioritySearch{
+
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+
+}
+.priority-search-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

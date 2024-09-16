@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e35c0685-3e2e-44aa-8eb1-3825b41d01fb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/.vscode/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/app.config.server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/app.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/app.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/new-task/new-task.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/new-task/new-task.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/new-task/new-task.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/new-task/new-task.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/search-task/search-task.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/search-task/search-task.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/search-task/search-task.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/search-task/search-task.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/tasks/tasks.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/tasks/tasks.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/tasks/tasks.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/app/tasks/tasks.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/main.server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/todoListAngular/tsconfig.spec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/check.png" beforeDir="false" afterPath="$PROJECT_DIR$/todoListAngular/resources/check.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/todoListAngular/resources/plus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo-List.iml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DarkyenusTimeTracker">
+    <option name="totalTimeSeconds" value="253" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="FirestoreTask" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Andysm21&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Andysm21/ToDoList.git&quot;,
+    &quot;accountId&quot;: &quot;3c414700-c982-4ebc-8309-7f58606cf46d&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2lmNL0H6iTpZPknJAuqBa6WbLwe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Node.js.script.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;AngularConversionTask&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Talent Prog/Front/TODOs/todo-List/resources/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Talent Prog\Front\TODOs\todo-List\resources\images" />
+      <recent name="D:\Talent Prog\Front\TODOs\todo-List\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Talent Prog\Front\TODOs\todo-List\todoListAngular" />
+      <recent name="D:\Talent Prog\Front\TODOs\todo-List\resources\images" />
+      <recent name="D:\Talent Prog\Front\TODOs\todo-List\resources" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18968.26" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18968.26" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e35c0685-3e2e-44aa-8eb1-3825b41d01fb" name="Changes" comment="" />
+      <created>1725781232895</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725781232895</updated>
+      <workItem from="1725781233957" duration="10090000" />
+      <workItem from="1725856962800" duration="733000" />
+      <workItem from="1725886283743" duration="7639000" />
+      <workItem from="1725898070058" duration="712000" />
+      <workItem from="1725898827841" duration="911000" />
+      <workItem from="1725965235638" duration="60000" />
+      <workItem from="1725965321555" duration="289000" />
+      <workItem from="1726480803342" duration="1976000" />
+      <workItem from="1726484129373" duration="140000" />
+      <workItem from="1726484276936" duration="11000" />
+      <workItem from="1726484454067" duration="11000" />
+      <workItem from="1726484476220" duration="99000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/AngularConversionTask" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

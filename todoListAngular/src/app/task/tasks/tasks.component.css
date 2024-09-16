@@ -1,0 +1,25 @@
+#deleteAll{
+  background-color: #78c1f3;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5%;
+}
+.tasks{
+  border: darkred 2px solid;
+
+}
+#pending-col{
+  border-radius: 10px;
+  overflow-y: auto;
+  background-color: pink;
+  padding: 25px;
+}
+#done-col{
+  border-radius: 10px;
+  overflow-y: auto;
+  background-color: lightgreen;
+  padding: 25px;
+}

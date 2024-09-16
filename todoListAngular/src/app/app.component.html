@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToDo List</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container mt-5" id="container">
+  <div class="todo_header">
+    <h1>ToDo List</h1> <button id="Refresh">Refresh</button>
+  </div>
+
+  <div class="illustration">
+    <div class="row">
+      <div class="col-md-6 pending">
+        <span>Pending</span>
+        <div class="pink box"></div>
+      </div>
+      <div class="col-md-6 finished">
+        <span>Finished</span>
+        <div class="lightgreen box"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <app-new-task></app-new-task>
+  <br>
+<app-search-task></app-search-task>
+  <br>
+  <br>
+<app-tasks> </app-tasks>
+
+
+</div>
+
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script type="text/javascript" src="../javascript/firestoreConfig.js"></script>
+<script type="text/javascript" src="../javascript/script.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"
+></script>
+
+</body>
+
+</html>
