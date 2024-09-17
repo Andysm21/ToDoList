@@ -1,0 +1,8 @@
+@for (task of pending; track task.task) {
+@if(task.isDone==false){
+<li class="card-body">
+{{task.task}}
+<button class="completed-btn" (click)="completed(task.task)"><img src="../../../assets/img/check.png" alt="done"></button>
+</li>
+}
+}

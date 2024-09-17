@@ -1,25 +1,25 @@
-<form>
-  <div class="add-task-container">
-  </div>
+<form (ngSubmit)="onAdd()" #form>
+  <div class="add-task-container"></div>
+
   <div class="form-group">
     <label>Task Name: </label>
     <br>
-    <input type="text" id="addTask" placeholder="Enter a task">
+    <input type="text" id="addTask" placeholder="Enter a task" [(ngModel)]="taskName" name="taskName">
   </div>
   <br>
+
   <div class="form-group">
-    <label >Priority: </label>
-    <select class="form-control" id="priorityAdd">
+    <label>Priority: </label>
+    <select required="true" class="form-control" id="priorityAdd" [(ngModel)]="taskPriority" name="taskPriority">
       <option>High</option>
-      <option>Meduim</option>
+      <option>Medium</option>
       <option>Low</option>
+      <option selected="selected">Priority</option>
     </select>
-    </div>
-    <br>
-    <div class="button-container">
-      <button type="button" id="add">Add Task</button>
-    </div>
+  </div>
+  <br>
 
-
-
+  <div class="button-container">
+    <button type="submit" id="add">Add Task</button>
+  </div>
 </form>

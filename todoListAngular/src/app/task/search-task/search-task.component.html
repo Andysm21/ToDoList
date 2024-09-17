@@ -1,11 +1,13 @@
 <div class="search-task-container">
-  <input type="text" id="searchTask" placeholder="Search a task" class=".search"/>
+  <input (keyup)="searchSubmit()" type="text" id="searchTask" placeholder="Search a task" class=".search" [(ngModel)]="searchInput"/>
 </div>
 <br>
-<div class="priority-search-container">
-<select class="form-control" id="prioritySearch" class=".search">
+<div  class="priority-search-container">
+<select (change)="searchSubmit()" class="form-control" id="prioritySearch" class=".search" name="searchPriority" [(ngModel)]="searchPriority">
   <option>High</option>
-  <option>Meduim</option>
-  <option selected="selected">Low</option>
+  <option>Medium</option>
+  <option >Low</option>
+  <option selected="selected">All</option>
+
 </select>
 </div>

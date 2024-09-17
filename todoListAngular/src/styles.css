@@ -4,7 +4,7 @@
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
-body {
+.body {
   background: #78c1f3;
   min-height: 100vh;
   display: flex;
@@ -12,7 +12,7 @@ body {
   justify-content: center;
 }
 
-.container {
+#container {
   background-color: white;
   padding: 25px;
   width: 550px;
