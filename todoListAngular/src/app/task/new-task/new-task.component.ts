@@ -22,10 +22,7 @@ export class NewTaskComponent {
       return;
     }
     if(this.taskPriority=="Priority") {this.taskPriority="Low";}
-    this.TaskService.addTask({task:this.taskName,priority:this.taskPriority,isDone:false}).subscribe({
-      next: ()=> console.log("Added"),
-      error:(err) =>console.error(err)
-    });
+    this.TaskService.addTask({task:this.taskName,priority:this.taskPriority,isDone:false,id:""});
     this.formEl.nativeElement.reset();
 
   }

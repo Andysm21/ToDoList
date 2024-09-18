@@ -2,7 +2,8 @@ import { inject, Injectable, signal } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { Task_Input } from './task-input.model';
 import { Firestore, collectionData, collection, doc, deleteDoc, addDoc, updateDoc, setDoc } from '@angular/fire/firestore';
-import { from, Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,40 +17,59 @@ export class TaskService {
 
   pendingTasksRead = this.pendingTasks.asReadonly();
   completedTasksRead = this.completedTasks.asReadonly();
-
+  private baseUrl="https://todorealtime-3089c-default-rtdb.europe-west1.firebasedatabase.app/"
 
   firestore:Firestore =inject(Firestore);
 
-  constructor(){this.fetchAllTasks();}
+  constructor(private http:HttpClient){this.fetchAllTasks();}
 
- fetchAllTasks() {
-  const taskCollection = collection(this.firestore, 'tasks');
-  collectionData<Task_Input>(taskCollection, { idField: 'id' }).subscribe((tasks: Task_Input[]) => {
-    this.pendingTasks.set(tasks.filter(t => !t.isDone));
-    this.completedTasks.set(tasks.filter(t => t.isDone));
-    this.filteredPendingTasks.set(tasks.filter(t=>!t.isDone));
-  });
-  this.filteredPendingTasks.set(this.pendingTasksRead());
-}
+  updateArrays(response : Task_Input[]){
+    this.pendingTasks.set(response.filter(t => !t.isDone));
+    this.completedTasks.set(response.filter(t => t.isDone));
+    this.filteredPendingTasks.set(this.pendingTasksRead());
+
+  }
+
+  fetchAllTasks() {
+    this.http.get<{ [key: string]: Task_Input }>(this.baseUrl + "tasks.json").pipe(
+      map(response => {
+        const tasksArray: Task_Input[] = [];
+        for (const key in response) {
+          if (response.hasOwnProperty(key)) {
+            tasksArray.push({ ...response[key], id: key });
+          }
+        }
+        return tasksArray;
+      })
+    ).subscribe(response => {
+      this.updateArrays(response);
+    });
+  }
 
   findByName(name:string){
     return this.pendingTasks().filter(t=>t.task.includes(name));
   }
 
-  addTask(task: Task_Input): Observable<void> {
-    return from(setDoc(doc(this.firestore, `tasks/${task.task}`), task).then(() => {}));
+  addTask(task: Task_Input) {
+      this.http.post<{ name: string }>(this.baseUrl+"/tasks.json", task).subscribe(response => {
+      const firebaseId = response.name;
+      const updatedTask: Task_Input = { ...task, id: firebaseId };
+      this.http.put(`${this.baseUrl}/tasks/${firebaseId}.json`, updatedTask).subscribe(() => {
+        this.pendingTasks.update(oldTasks => [...oldTasks, updatedTask]);
+        this.filteredPendingTasks.update(oldTasks => [...oldTasks, updatedTask]);
+      });
+    });
   }
 
   completeTask(task: Task_Input) {
-    const taskDoc=doc(this.firestore, 'tasks', task.task);
-    from(updateDoc(taskDoc, {isDone: true}));
+    this.http.put(this.baseUrl+"/tasks/"+task.id +".json",task).subscribe((response)=>{console.log(response)});
     this.completedTasks.update((oldTasks)=>[...oldTasks, task]);
     this.pendingTasks.update((oldTasks)=>oldTasks.filter(t=>t.task!==task.task));
   }
   deleteDoneTasks(){
-    const deleteOps = this.completedTasks().map(task => {
-      const taskDocRef = doc(this.firestore, `tasks/${task.task}`);
-      return from(deleteDoc(taskDocRef));
+    this.completedTasks().forEach(task => {
+      this.http.delete(`${this.baseUrl}/tasks/${task.id}.json`).subscribe(response => {
+      });
     });
     this.completedTasks.set([]);
 

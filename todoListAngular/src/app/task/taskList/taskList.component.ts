@@ -5,13 +5,13 @@ import { TaskPendingElementComponent } from '../task-pending-element/task-pendin
 import { TaskDoneElementComponent } from '../task-done-element/task-done-element.component';
 
 @Component({
-  selector: 'app-tasks',
+  selector: 'app-tasks-list',
   standalone: true,
   imports: [TaskPendingElementComponent,TaskDoneElementComponent],
   templateUrl: './taskList.component.html',
   styleUrl: './taskList.component.css'
 })
-export class TasksComponent {
+export class TasksListComponent {
   completed: Task_Input[] = [];
   constructor(private TaskService: TaskService) {
     this.TaskService.completed$.subscribe((tasks)=>this.completed=tasks);
