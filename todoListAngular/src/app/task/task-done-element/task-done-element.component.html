@@ -1,0 +1,9 @@
+@for (task of completedTasksArray; track task.task) {
+  @if(task.isDone==true){
+  <li class="card-body">
+    <em>
+  {{task.task}}
+    </em>
+  </li>
+  }
+  }

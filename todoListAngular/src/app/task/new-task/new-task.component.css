@@ -1,0 +1,17 @@
+.button-container,.form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add {
+  background-color: #78c1f3;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

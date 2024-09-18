@@ -1,0 +1,13 @@
+<div class="row tasks">
+  <div class="col" >Pending
+  <ul id="pending-col" >
+    <app-pendingtask-element > </app-pendingtask-element>
+  </ul>
+  </div>
+  <div class="col" >Done
+  <ul id="done-col">
+    <app-task-done-element> </app-task-done-element>
+  </ul>
+  </div>
+</div>
+<button (click)="deleteDone()"  id="deleteAll">Delete Done</button>
