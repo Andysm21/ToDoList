@@ -42,7 +42,7 @@ export class TaskService {
 
   completeTask(task: Task_Input) {
     const taskDoc=doc(this.firestore, 'tasks', task.task);
-    updateDoc(taskDoc, {isDone: true});
+    from(updateDoc(taskDoc, {isDone: true}));
     this.completedTasks.update((oldTasks)=>[...oldTasks, task]);
     this.pendingTasks.update((oldTasks)=>oldTasks.filter(t=>t.task!==task.task));
   }
@@ -54,7 +54,7 @@ export class TaskService {
     this.completedTasks.set([]);
 
   }
-   filterTasks(priority: 'Low' | 'Medium' | 'High' | 'All', search: string) {
+  filterTasks(priority: 'Low' | 'Medium' | 'High' | 'All', search: string) {
     if(priority=='All'&&search==''){
            this.fetchAllTasks();
     }
@@ -72,12 +72,6 @@ export class TaskService {
               task.task.toLowerCase().includes(search.toLowerCase())
             ));
           }
-          // this.pendingTasks.set(filteredTasks);
-
-
-
-
-
     }
   }
 }
