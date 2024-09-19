@@ -13,10 +13,18 @@ export class AuthService{
   private signInBaseAPIUrl=`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${ApiKey}`;
   user = new BehaviorSubject<User|null>(null);
 
-
+  parseUserFromLocalStorage(){
+    const userData :{
+      email:string,
+      id:string,
+      _token:string,
+      _tokenExpirationDate:string
+    }= JSON.parse(localStorage.getItem('userData')!);
+    return userData;
+  }
   constructor(private http:HttpClient){}
 
-  signup(email: string, password: string) {
+  signUp(email: string, password: string) {
     return this.http.post<AuthResponseData>(this.signUpBaseAPIUrl, {
       email: email,
       password: password,
@@ -27,7 +35,7 @@ export class AuthService{
     }));
   }
 
-  signin(email: string, password: string) {
+  signIn(email: string, password: string) {
     return this.http.post<AuthResponseData>(this.signInBaseAPIUrl, {
       email: email,
       password: password,
@@ -37,7 +45,7 @@ export class AuthService{
     }));
   }
 
-  logout() {
+  logOut() {
     localStorage.removeItem('userData');
     this.user.next(null);
   }

@@ -53,9 +53,10 @@ export class SignUpComponent {
 onSubmit(authForm:NgForm){
   this.submit=!this.submit;
   if(this.email.valid && this.password.valid){
-    this.authService.signup(this.email.value!,this.password.value!).subscribe(
+    this.authService.signUp(this.email.value!,this.password.value!).subscribe(
       response=>{
         console.log("Response",response);
+        this.router.navigate(['/tasks']);
       },
       error=>{
         if(this.errorMessage()===''){
