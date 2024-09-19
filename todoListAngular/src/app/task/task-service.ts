@@ -1,16 +1,17 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { AuthService } from './../auth/auth.service';
+import { Injectable, signal } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { Task_Input } from './task-input.model';
-import { Firestore, collectionData, collection, doc, deleteDoc, addDoc, updateDoc, setDoc } from '@angular/fire/firestore';
-import { from, map, Observable } from 'rxjs';
+import {  map, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService {
+export class TaskService  {
   pendingTasks = signal<Task_Input[]>([]);
   private completedTasks = signal<Task_Input[]>([]);
   filteredPendingTasks=signal<Task_Input[]>([]);
+
   pending$=toObservable(this.pendingTasks);
   filtered$=toObservable(this.filteredPendingTasks);
   completed$=toObservable(this.completedTasks);
@@ -19,18 +20,26 @@ export class TaskService {
   completedTasksRead = this.completedTasks.asReadonly();
   private baseUrl="https://todorealtime-3089c-default-rtdb.europe-west1.firebasedatabase.app/"
 
-  firestore:Firestore =inject(Firestore);
-
-  constructor(private http:HttpClient){this.fetchAllTasks();}
+  token="";
+  currentUser: string ="";
+  constructor(private http:HttpClient ){}
 
   updateArrays(response : Task_Input[]){
-    this.pendingTasks.set(response.filter(t => !t.isDone));
-    this.completedTasks.set(response.filter(t => t.isDone));
+    this.pendingTasks.set(response.filter(t => !t.isDone && t.userEmail===this.currentUser));
+    this.completedTasks.set(response.filter(t => t.isDone && t.userEmail===this.currentUser));
     this.filteredPendingTasks.set(this.pendingTasksRead());
 
   }
 
   fetchAllTasks() {
+    const userData :{
+      email:string,
+      id:string,
+      _token:string,
+      _tokenExpirationDate:string
+    }= JSON.parse(localStorage.getItem('userData')!);
+    this.token= "?auth="+userData._token;
+    this.currentUser= userData.email;
     this.http.get<{ [key: string]: Task_Input }>(this.baseUrl + "tasks.json").pipe(
       map(response => {
         const tasksArray: Task_Input[] = [];
@@ -40,35 +49,49 @@ export class TaskService {
           }
         }
         return tasksArray;
+      }),
+      tap(response => {
+        this.updateArrays(response);
       })
-    ).subscribe(response => {
-      this.updateArrays(response);
-    });
+    ).subscribe();
   }
 
+
+
   findByName(name:string){
-    return this.pendingTasks().filter(t=>t.task.includes(name));
+    this.fetchAllTasks()
+    console.log( this.pendingTasks().filter(t=>t.task===name && t.userEmail===this.currentUser))
+    return this.pendingTasks().filter(t=>t.task===name && t.userEmail===this.currentUser);
   }
 
   addTask(task: Task_Input) {
-      this.http.post<{ name: string }>(this.baseUrl+"/tasks.json", task).subscribe(response => {
-      const firebaseId = response.name;
-      const updatedTask: Task_Input = { ...task, id: firebaseId };
-      this.http.put(`${this.baseUrl}/tasks/${firebaseId}.json`, updatedTask).subscribe(() => {
-        this.pendingTasks.update(oldTasks => [...oldTasks, updatedTask]);
-        this.filteredPendingTasks.update(oldTasks => [...oldTasks, updatedTask]);
-      });
-    });
+
+    if(this.findByName(task.task).length==0){
+      this.http.post<{ name: string }>(this.baseUrl+"tasks.json", task).subscribe(response => {
+        const firebaseId = response.name;
+        const updatedTask: Task_Input = { ...task, id: firebaseId };
+        this.http.put(this.baseUrl+"tasks/"+firebaseId+".json", updatedTask).subscribe(() => {
+          this.pendingTasks.update(oldTasks => [...oldTasks, updatedTask]);
+          this.filteredPendingTasks.update(oldTasks => [...oldTasks, updatedTask]);
+        });
+      },
+      error => {console.log(error)});
+    }
+    else{
+      alert("Task Exists with this name")
+      return;
+    }
   }
 
   completeTask(task: Task_Input) {
-    this.http.put(this.baseUrl+"/tasks/"+task.id +".json",task).subscribe((response)=>{console.log(response)});
+    this.http.put(this.baseUrl+"tasks/"+task.id +".json",task).subscribe((response)=>{console.log(response)});
     this.completedTasks.update((oldTasks)=>[...oldTasks, task]);
     this.pendingTasks.update((oldTasks)=>oldTasks.filter(t=>t.task!==task.task));
+    this.fetchAllTasks()
   }
   deleteDoneTasks(){
     this.completedTasks().forEach(task => {
-      this.http.delete(`${this.baseUrl}/tasks/${task.id}.json`).subscribe(response => {
+      this.http.delete(`${this.baseUrl}tasks/${task.id}.json`).subscribe(response => {
       });
     });
     this.completedTasks.set([]);

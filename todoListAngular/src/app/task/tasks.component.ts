@@ -1,8 +1,10 @@
-import { Component} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { TaskService } from './task-service';
+import { Component, OnInit} from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { TasksListComponent } from './taskList/taskList.component';
 import { SearchTaskComponent } from './search-task/search-task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { AuthService } from '../auth/auth.service';
 
 
 
@@ -13,7 +15,16 @@ import { NewTaskComponent } from './new-task/new-task.component';
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
-export class TasksComponent {
-  title = 'Personal To Do List';
-;
+export class TasksComponent implements OnInit{
+  constructor(private authService: AuthService,private taskService:TaskService,private router:Router) {}
+  ngOnInit(): void {
+    this.authService.autoLogin();
+    this.taskService.fetchAllTasks();
+  }
+onLogout(){
+  this.authService.logout();
+  this.router.navigate(['/logIn']);
+
+}
+
 }
