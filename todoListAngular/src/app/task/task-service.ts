@@ -22,7 +22,7 @@ export class TaskService  {
 
   token="";
   currentUser: string ="";
-  constructor(private http:HttpClient ){}
+  constructor(private http:HttpClient,private authService:AuthService ){}
 
   updateArrays(response : Task_Input[]){
     this.pendingTasks.set(response.filter(t => !t.isDone && t.userEmail===this.currentUser));
@@ -32,12 +32,7 @@ export class TaskService  {
   }
 
   fetchAllTasks() {
-    const userData :{
-      email:string,
-      id:string,
-      _token:string,
-      _tokenExpirationDate:string
-    }= JSON.parse(localStorage.getItem('userData')!);
+    let userData= this.authService.parseUserFromLocalStorage();
     this.token= "?auth="+userData._token;
     this.currentUser= userData.email;
     this.http.get<{ [key: string]: Task_Input }>(this.baseUrl + "tasks.json").pipe(
@@ -60,7 +55,6 @@ export class TaskService  {
 
   findByName(name:string){
     this.fetchAllTasks()
-    console.log( this.pendingTasks().filter(t=>t.task===name && t.userEmail===this.currentUser))
     return this.pendingTasks().filter(t=>t.task===name && t.userEmail===this.currentUser);
   }
 

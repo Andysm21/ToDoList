@@ -14,8 +14,9 @@ export class AuthInterceptorService implements HttpInterceptor {
         if (!user) {
           return next.handle(req);
         }
+        let userData = this.authService.parseUserFromLocalStorage();
         const modifiedReq = req.clone({
-          params: req.params.set('auth', this.authService.user.getValue()?.token+""),
+          params: req.params.set('auth', (this.authService.user.getValue()?.token+"") ? this.authService.user.getValue()?.token+"":userData._token ),
         });
         return next.handle(modifiedReq);
       })

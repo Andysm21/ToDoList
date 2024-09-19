@@ -21,10 +21,10 @@ export class TasksComponent implements OnInit{
     this.authService.autoLogin();
     this.taskService.fetchAllTasks();
   }
-onLogout(){
-  this.authService.logout();
-  this.router.navigate(['/logIn']);
+  onLogout(){
+    this.authService.logOut();
+    this.router.navigate(['/logIn']);
 
-}
+  }
 
 }

@@ -56,7 +56,7 @@ export class LogInComponent {
     this.submit = !this.submit;
 
     if (this.email.valid && this.password.valid) {
-      this.authService.signin(this.email.value!, this.password.value!).pipe(
+      this.authService.signIn(this.email.value!, this.password.value!).pipe(
         tap(response => {
           this.taskService.fetchAllTasks();
           this.router.navigate(['/tasks']);
