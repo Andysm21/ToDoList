@@ -1,0 +1,33 @@
+
+  <div class="body">
+    <div class="container mt-5" id="container">
+      <header>
+        <div class="button-container">
+          <button type="submit" id="logout" name="logout" (click)="onLogout()">Logout</button>
+        </div>
+    </header>
+      <div class="todo_header">
+        <h1>ToDo List</h1>
+      </div>
+      <div class="illustration">
+        <div class="row">
+          <div class="col-md-6 pending">
+            <span>Pending</span>
+            <div class="pink box"></div>
+          </div>
+          <div class="col-md-6 finished">
+            <span>Finished</span>
+            <div class="lightgreen box"></div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <app-new-task ></app-new-task>
+      <br>
+    <app-search-task ></app-search-task>
+      <br>
+      <br>
+    <app-tasks-list></app-tasks-list>
+    </div>
+
+

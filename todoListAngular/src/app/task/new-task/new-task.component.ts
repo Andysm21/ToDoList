@@ -17,15 +17,19 @@ export class NewTaskComponent {
   constructor(private TaskService: TaskService) {}
 
   onAdd() {
-    if(!this.taskName){
+    console.log(this.taskName);
+    console.log(this.taskPriority);
+    if(!this.taskName||this.taskName==null){
       alert("Task name is required");
       return;
     }
-    if(this.taskPriority=="Priority") {this.taskPriority="Low";}
-    this.TaskService.addTask({task:this.taskName,priority:this.taskPriority,isDone:false}).subscribe({
-      next: ()=> console.log("Added"),
-      error:(err) =>console.error(err)
-    });
+    if(this.taskPriority=='Priority'||this.taskPriority==null){
+      this.taskPriority='Priority';
+      alert("please select a priority");
+
+      return;
+    }
+    this.TaskService.addTask({task:this.taskName,priority:this.taskPriority,isDone:false,id:"",userEmail:this.TaskService.currentUser});
     this.formEl.nativeElement.reset();
 
   }
