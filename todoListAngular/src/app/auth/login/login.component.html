@@ -1,11 +1,10 @@
 <div class="body">
   <div class="container">
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-      <div class="bigContainer">
-        <div class="example-container">
-          <div class="header">
-            <mat-label >Log In</mat-label>
-          </div>
+
+    <mat-stepper linear #stepper>
+      <mat-step [stepControl]="form.at(0)" >
+        <form #authForm1="ngForm" [formGroup]="form.at(0)">
+          <ng-template matStepLabel>Your E-mail</ng-template>
           <mat-form-field>
             <mat-label>Enter your email</mat-label>
             <input
@@ -21,19 +20,26 @@
               <mat-error >{{ errorMessage() }}</mat-error>
             }
           </mat-form-field>
-        </div>
-
-        <div class="example-container">
+          <div>
+            <button mat-button matStepperNext>SignIn</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step  [formGroup]="form.at(1)"  >
+        <form  #authForm2="ngForm" [formGroup]="form.at(1)" (ngSubmit)="onSubmit()">
+          <ng-template matStepLabel>Your password</ng-template>
           <mat-form-field>
             <mat-label>Enter your password</mat-label>
             <input id="input-field"
               matInput
               [formControl]="password"
               ngModel
+              (blur)="updateErrorMessage()"
               name="password"
               minlength="6"
               [type]="hide() ? 'password' : 'text'"
             />
+
             <button
               mat-icon-button
               matSuffix
@@ -44,17 +50,18 @@
               <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
             </button>
           </mat-form-field>
-        </div>
-        @if(submit){
-          <p>{{errorMessage()}}</p>
-        }
-  </div>
-  <button
-  mat-button
-  class="loginbtn"
-  color="primary">Log In</button>
 
-    </form><button
+              <mat-error>{{errorMessage()}}</mat-error>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Submit </button>
+          </div>
+        </form>
+      </mat-step>
+
+    </mat-stepper>
+    <button
     mat-button
     class="loginbtn"
     color="primary" (click)="SignInRoute()">Switch to Sign Up</button>
