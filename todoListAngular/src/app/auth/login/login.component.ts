@@ -26,6 +26,7 @@ export class LogInComponent {
   submit=false;
   readonly email = new FormControl('', [Validators.required, Validators.email]);
   readonly password = new FormControl('', [Validators.required,Validators.minLength(6)]);
+
   errorMessage = signal('');
   hide = signal(true);
 
@@ -53,7 +54,6 @@ export class LogInComponent {
     }
   }
   onSubmit(authForm: NgForm) {
-    this.submit = !this.submit;
 
     if (this.email.valid && this.password.valid) {
       this.authService.signIn(this.email.value!, this.password.value!).pipe(

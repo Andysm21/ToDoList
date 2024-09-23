@@ -24,7 +24,6 @@ export class TasksComponent implements OnInit{
   onLogout(){
     this.authService.logOut();
     this.router.navigate(['/logIn']);
-
   }
 
 }
